@@ -122,7 +122,38 @@ mongoimport "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c p
 | `$lte`   | Less than or equal    | `{ age: { $lte: 25 } }`         | age **25 ya usse kam**            |
 
 
+#### 1. Students older than 20
+```bash
+db.students.find({ age: { $gt: 20 } })
+```
 
+#### 2. Students age 20 or older
+```bash
+db.students.find({ age: { $gte: 20 } })
+```
+
+#### 3. Students age not equal to 22
+```bash
+db.students.find({ age: { $ne: 22 } })
+```
+
+#### 4. Students age between 20 and 24
+```bash
+db.students.find({ age: { $gte: 20, $lte: 24 } })
+```
+
+#### 5. Combine with other fields
+```bash
+db.students.find({
+  department: "AI",
+  age: { $gt: 20 }
+})
+```
+
+| Operator | Meaning                               | Example                                  |
+| -------- | ------------------------------------- | ---------------------------------------- |
+| `$in`    | matches any value in array            | `{ department: { $in: ["IT", "CS"] } }`  |
+| `$nin`   | does **not** match any value in array | `{ department: { $nin: ["AI", "CS"] } }` |
 
 
 
