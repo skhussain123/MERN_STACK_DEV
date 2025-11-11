@@ -94,6 +94,22 @@ db.students.findOne({ name: "Aisha" })
 
 <br>
 
+```bash
+mongoimport "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c products --jsonArray
+```
+
+#### Example
+```bash
+"C:\Program Files\MongoDB\Tools\100\bin\mongoimport.exe" --file "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c products
+```
+<br>
+
+![alt text](image10.PNG)
+
+<br>
+
+
+
 
 
 
