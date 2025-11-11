@@ -204,3 +204,50 @@ db.collection.find(query).sort({ field1: 1, field2: -1 })
 * -1 → descending order (largest to smallest, Z→A).
 
 ![alt text](image12.PNG)
+
+---
+
+## logical operators
+
+### 1. $and
+Matches documents that satisfy all conditions.
+
+```bash
+db.students.find({
+  $and: [
+    { age: { $gt: 18 } },
+    { grade: "A" }
+  ]
+});
+```
+
+### 2. $or
+Matches documents that satisfy at least one condition.
+```bash
+db.students.find({
+  $or: [
+    { grade: "A" },
+    { age: { $lt: 18 } }
+  ]
+});
+```
+
+### 3. $not
+Negates a condition.
+
+```bash
+db.students.find({
+  age: { $not: { $gt: 18 } }
+});
+```
+
+### 4. $nor
+Matches documents that do not satisfy any of the conditions.
+```bash
+db.students.find({
+  $nor: [
+    { grade: "A" },
+    { age: { $lt: 18 } }
+  ]
+});
+```
