@@ -22,6 +22,9 @@ React.js (commonly called React) is a JavaScript library for building user inter
 
 <br>
 
+![alt text](image3.PNG)
+
+
 ### React History
 | Year          | Event                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------------- |
@@ -81,6 +84,11 @@ npm create vite  or npm create vite@latest my-app --template react
 -->react-project
 -->React
 -->Javascript
+```
+
+#### Update Packages
+```bash
+npx npm-check-updates
 ```
 
 ```bash
