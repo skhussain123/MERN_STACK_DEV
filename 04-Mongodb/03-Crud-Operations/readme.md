@@ -56,3 +56,15 @@ db.students.insertMany([
 ![alt text](image7.PNG)
 
 <br>
+
+#### Example 2 (jab bulk data insert me already exits Student id wala data insert kro. to baki all data insert ho jayega.error wali emtry ko chor kr)
+
+```bash
+db.students.insertMany([
+  { name: "Aisha", age: 20, department: "IT" },
+  { _id: ObjectId('69137b9d93ed895e1f63b113'), name: "Hassan", age: 22, department: "AI" }
+], 
+{ ordered: false })
+```
+
+
