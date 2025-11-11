@@ -42,6 +42,10 @@ db.students.insertMany([
 
 <br>
 
+![alt text](image6.PNG)
+
+<br>
+
 ![alt text](image5.PNG)
 
 <br>
