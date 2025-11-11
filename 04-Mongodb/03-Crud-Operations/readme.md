@@ -1,6 +1,5 @@
 
 # Advance Insert Operation 
-
 ### 1. insertOne
 ```bash
 db.students.insertOne({
@@ -67,6 +66,18 @@ db.students.insertMany([
 ![alt text](image8.PNG)
 
 <br>
+
+---
+
+# Read Operation in MongoDB
+* Read document
+* comparison operator'
+* logical operators
+* Cursors Mongodb
+* Elements Operators
+
+
+
 
 
 
