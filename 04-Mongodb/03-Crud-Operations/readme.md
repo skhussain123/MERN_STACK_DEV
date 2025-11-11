@@ -77,7 +77,7 @@ db.students.insertMany([
 * Elements Operators
 
 
-### Find Document
+## Find Document
 
 #### find
 ```bash
@@ -162,6 +162,34 @@ db.students.find().count()
 | `$nin`   | does **not** match any value in array | `{ department: { $nin: ["AI", "CS"] } }` |
 
 
+## what is cursor in mongodb
+In MongoDB, a cursor is an object that allows you to iterate over the results of a query. It acts as a pointer to the documents in a collection that match your query. Instead of returning all results at once, MongoDB returns a cursor, and you can then fetch documents one by one or in batches.
+
+* When you run a query like db.collection.find(), MongoDB does not return all documents immediately.
+* It returns a cursor pointing to the matching documents.
+* You can then use methods like .next(), .forEach(), or .toArray() to access the data.
+
+* Lazy evaluation: The query is executed on-demand as you iterate.
+* Memory-efficient: Useful for large datasets because it doesn't load all documents at once.
+* Methods: .next(), .hasNext(), .forEach(), .toArray(), .limit(), .sort().
+
+### cursor mehtods
+
+#### 1. Get Count
+```bash
+db.students.find().count()
+```
+
+#### 2. Set Limit
+```bash
+db.students.find().limit(1)
+```
+#### 2. Skip
+```bash
+db.students.find().limit(2).skip(1)
+```
+* Skips the first document in the result set.
+* So, MongoDB ignores the first document and then returns the next 2.
 
 
 
