@@ -106,6 +106,7 @@ mongoimport "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c p
 
 ![alt text](image10.PNG)
 
+
 ## Comparison Operators
 ![alt text](image11.PNG)
 
