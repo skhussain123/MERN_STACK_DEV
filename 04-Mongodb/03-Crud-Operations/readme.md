@@ -184,12 +184,23 @@ db.students.find().count()
 ```bash
 db.students.find().limit(1)
 ```
-#### 2. Skip
+#### 3. Skip
 ```bash
 db.students.find().limit(2).skip(1)
 ```
 * Skips the first document in the result set.
 * So, MongoDB ignores the first document and then returns the next 2.
 
+#### 4. // Sort ascending
+```bash
+db.students.find().sort({ age: 1 });
+```
 
+#### 5. descending
+```bash
+db.collection.find(query).sort({ field1: 1, field2: -1 })
+```
+* 1 → ascending order (smallest to largest, A→Z).
+* -1 → descending order (largest to smallest, Z→A).
 
+![alt text](image12.PNG)
