@@ -150,6 +150,12 @@ db.students.find({
 })
 ```
 
+#### 6. Get Count
+```bash
+db.students.find().count()
+```
+
+#### 7. in or nin
 | Operator | Meaning                               | Example                                  |
 | -------- | ------------------------------------- | ---------------------------------------- |
 | `$in`    | matches any value in array            | `{ department: { $in: ["IT", "CS"] } }`  |
