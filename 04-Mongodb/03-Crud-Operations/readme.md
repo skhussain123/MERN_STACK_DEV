@@ -106,12 +106,22 @@ mongoimport "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c p
 
 ![alt text](image10.PNG)
 
-<br>
-
-### Operators
+## Comparison Operators
 ![alt text](image11.PNG)
 
 <br>
+
+| Operator | Meaning               | Example                         | Description                       |
+| -------- | --------------------- | ------------------------------- | --------------------------------- |
+| `$eq`    | Equal to              | `{ age: { $eq: 20 } }`          | age **exactly 20** wale documents |
+| `$ne`    | Not equal to          | `{ department: { $ne: "AI" } }` | department **AI nahi** wale       |
+| `$gt`    | Greater than          | `{ age: { $gt: 20 } }`          | age **20 se zyada**               |
+| `$gte`   | Greater than or equal | `{ age: { $gte: 20 } }`         | age **20 ya usse zyada**          |
+| `$lt`    | Less than             | `{ age: { $lt: 25 } }`          | age **25 se kam**                 |
+| `$lte`   | Less than or equal    | `{ age: { $lte: 25 } }`         | age **25 ya usse kam**            |
+
+
+
 
 
 
