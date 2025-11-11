@@ -17,6 +17,11 @@ React.js (commonly called React) is a JavaScript library for building user inter
 
 <br>
 
+
+![alt text](image2.PNG)
+
+<br>
+
 #### Component-Based Architecture
 * Applications are built using components, which are reusable and modular pieces of code.
 * Example: A Button component can be reused throughout the app.
