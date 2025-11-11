@@ -55,7 +55,6 @@ db.students.insertMany([
 
 ![alt text](image7.PNG)
 
-<br>
 
 #### Example 2 (jab bulk data insert me already exits Student id wala data insert kro. to baki all data insert ho jayega.error wali emtry ko chor kr)
 
