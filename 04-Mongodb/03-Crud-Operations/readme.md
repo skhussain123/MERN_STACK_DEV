@@ -209,6 +209,8 @@ db.collection.find(query).sort({ field1: 1, field2: -1 })
 
 ## logical operators
 
+![alt text](image13.PNG)
+
 ### 1. $and
 Matches documents that satisfy all conditions.
 
