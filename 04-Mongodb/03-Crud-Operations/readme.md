@@ -64,4 +64,10 @@ db.students.insertMany([
 { ordered: false })
 ```
 
+![alt text](image8.PNG)
+
+<br>
+
+
+
 
