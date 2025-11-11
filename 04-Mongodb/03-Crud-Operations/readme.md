@@ -77,7 +77,22 @@ db.students.insertMany([
 * Elements Operators
 
 
+### Find Document
 
+#### find
+```bash
+db.students.find()
+```
+
+#### findOne
+```bash
+db.students.findOne({ name: "Aisha" })
+```
+<br>
+
+![alt text](image9.PNG)
+
+<br>
 
 
 
