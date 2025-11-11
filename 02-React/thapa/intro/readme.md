@@ -22,6 +22,20 @@ React.js (commonly called React) is a JavaScript library for building user inter
 
 <br>
 
+### React History
+| Year          | Event                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| **2011**      | React was created internally at Facebook by **Jordan Walke**, a software engineer.                      |
+| **2013**      | React was open-sourced at **JSConf US**.                                                                |
+| **2015**      | **React Native** was introduced (for mobile apps).                                                      |
+| **2016**      | React fiber (complete rewrite) was announced.                                                           |
+| **2017**      | React Fiber became the core algorithm.                                                                  |
+| **2020**      | React introduced **Concurrent Mode (experimental)** and **React Server Components**.                    |
+| **2022**      | **React 18** was released with features like automatic batching, transitions, and concurrent rendering. |
+| **2024–2025** | Focus on **React Server Components**, **bundler support**, and **better developer experience**.         |
+
+
+
 #### Component-Based Architecture
 * Applications are built using components, which are reusable and modular pieces of code.
 * Example: A Button component can be reused throughout the app.
