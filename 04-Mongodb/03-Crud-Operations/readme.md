@@ -16,6 +16,15 @@ db.students.insertOne({
 
 <br>
 
+**insertMany**
+
+```bash
+db.students.insertMany([
+  { name: "Aisha", age: 20, department: "IT" },
+  { name: "Hassan", age: 22, department: "AI" }
+])
+```
+
 ![alt text](image2.PNG)
 
 <br>
