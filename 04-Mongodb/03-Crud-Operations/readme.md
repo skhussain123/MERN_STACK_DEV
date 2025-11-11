@@ -1,7 +1,7 @@
 
 # Advance Insert Operation 
 
-### insertOne
+### 1. insertOne
 ```bash
 db.students.insertOne({
   name: "Ali Khan",
@@ -17,7 +17,7 @@ db.students.insertOne({
 
 <br>
 
-### insertMany
+### 2. insertMany
 
 ```bash
 db.students.insertMany([
