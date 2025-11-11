@@ -50,4 +50,9 @@ db.students.insertMany([
 
 <br>
 
+#### Example (jab bulk data insert me already exits Student id wala data insert kiya gaya ho)
+<br>
 
+![alt text](image7.PNG)
+
+<br>
