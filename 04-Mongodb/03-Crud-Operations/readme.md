@@ -38,4 +38,12 @@ db.students.insertMany([
 
 <br>
 
+* agr ap insertMany me multiple recorde inert kr rahy ho or bech ke kisi operation me error a jaye to ussy pehly wala data insert hoga sirf. bad wala nhi insert hoga.
+
+<br>
+
+![alt text](image5.PNG)
+
+<br>
+
 
