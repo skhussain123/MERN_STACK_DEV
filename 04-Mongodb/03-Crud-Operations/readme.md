@@ -108,6 +108,10 @@ mongoimport "C:\Users\user\Downloads\mongo_json_data\products.json" -d shop -c p
 
 <br>
 
+### Operators
+![alt text](image11.PNG)
+
+<br>
 
 
 
