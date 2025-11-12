@@ -4,6 +4,8 @@
 javscript me jis tarha funciton call krty ha us tarha react me nhi kr sakty.react me function call krty wqt camel case 
 me call krna hota hain. function defination batani pharti hain. is tarha.
 
+![alt text](image1.PNG)
+
 ```bash
 function Profile() {
 
@@ -156,4 +158,66 @@ function Button() {
 ```
 * Jab React isko "call" karta hai, ye actual me <Button /> ke form me likha jata hai, aur React us return JSX ko DOM me render karta hai.
 * Iska result screen pe visible hota hai, na ke sirf console ya variable me.
+
+
+---
+
+## Passing Events as Props 
+
+![alt text](image2.PNG)
+
+#### Parent Component (Parent.js)
+```bash
+import React from "react";
+import Child from "./Child";
+
+export default function Parent() {
+  const handleClick = () => {
+    alert("Button clicked in child component!");
+  };
+
+  return (
+    <div>
+      <h2>Parent Component</h2>
+      {/* Passing function as a prop */}
+      <Child onButtonClick={handleClick} />
+    </div>
+  );
+}
+```
+
+#### Child Component (Child.js)
+```bash
+import React from "react";
+
+export default function Child({ onButtonClick }) {
+  return (
+    <div>
+      <h3>Child Component</h3>
+      {/* Using the function passed as prop */}
+      <button onClick={onButtonClick}>Click Me</button>
+    </div>
+  );
+}
+
+```
+
+---
+
+## What is Event Propagation?
+Event Propagation refers to how an event (like a click) travels through the DOM hierarchy when triggered.
+
+#### There are two main phases:
+* Capturing phase → event moves from the top (root) down to the target element.
+* Bubbling phase → event moves from the target back up to the root.
+
+
+![alt text](image3.PNG)
+
+??
+
+
+---
+
+
 
