@@ -253,3 +253,52 @@ db.students.find({
   ]
 });
 ```
+
+---
+
+## Element Operators
+In MongoDB, Element Operators are used to test whether a field exists in a document or what type of data it contains.
+They are mainly used in queries (inside find()).
+
+![alt text](image14.PNG)
+
+### 1. $exists
+Checks if a field exists or does not exist in a document.
+
+```bash
+db.users.find({ email: { $exists: true } })
+```
+* Finds all users that have an email field.
+
+### 2. $type
+Selects documents where the field is of a specific BSON data type.
+
+```bash
+db.products.find({ price: { $type: "double" } })
+```
+* Finds documents where price is a double (floating point number).
+
+| Type | Name        | Example               |
+| ---- | ----------- | --------------------- |
+| 1    | double      | 12.5                  |
+| 2    | string      | "hello"               |
+| 3    | object      | `{ a: 1 }`            |
+| 4    | array       | `[1, 2, 3]`           |
+| 5    | binary data | BinData(...)          |
+| 7    | objectId    | ObjectId("...")       |
+| 8    | boolean     | true / false          |
+| 9    | date        | ISODate("2024-11-12") |
+| 10   | null        | null                  |
+| 16   | int         | 12                    |
+| 18   | long        | NumberLong(1234)      |
+
+#### Multiple Types
+```bash
+db.inventory.find({ quantity: { $type: ["int", "double"] } })
+```
+#### Combining $exists and $type
+```bash
+db.users.find({
+  age: { $exists: true, $type: "int" }
+})
+```

@@ -43,5 +43,14 @@ React me jab aap likhte ho to React ko samajhna padta hai ke "faWhatsapp" kaun s
 Usko manually batana padta hai —
 * “Ye icons available hain, inhe use kar lo.”
 
+---
 
+## Icons Library
+### React icon
+
+https://www.npmjs.com/package/react-icons
+
+```bash
+npm i react-icons
+```
 
