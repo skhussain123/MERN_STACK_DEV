@@ -2,7 +2,7 @@
 
 #### Installation
 ```bash
-npm install -D tailwindcss postcss autoprefixer
+npm install tailwindcss @tailwindcss/vite
 ```
 ```bash
 npx tailwindcss init -p
@@ -13,24 +13,42 @@ bun tailwindcss init -p
 
 ```
 
-#### tailwind.config.js
+#### vite.config.ts
 ```bash
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    react(),
+   tailwindcss(),
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+})
 ```
 
-#### src/index.css
+#### App.css
 ```bash
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+```
+
+#### App.jsx
+```bash
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <p class="text-3xl font-bold underline">
+        Hello world!
+      </p>
+    </>
+  )
+}
+export default App
 ```

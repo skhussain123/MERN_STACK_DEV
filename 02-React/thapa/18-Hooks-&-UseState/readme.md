@@ -107,6 +107,144 @@ When the state changes, React re-renders that component (and its children, if ne
 ![alt text](image7.PNG)
 
 
+---
+
+## What is Derived State in React?
+Derived State means state that is computed from other existing state or props, instead of being stored separately.
+
+If you can calculate a value from existing state or props, you don’t need to store it as new state — you just derive it when rendering.
+
+### ❌ Bad: Redundant state
+```bash
+import { useState } from "react";
+
+function Example() {
+  const [items] = useState([1, 2, 3, 4]);
+  const [total, setTotal] = useState(0);
+
+  // ❌ Derived data stored separately
+  useEffect(() => {
+    setTotal(items.length);
+  }, [items]);
+
+  return <p>Total items: {total}</p>;
+}
+```
+
+### Good: Derive instead of storing
+```bash
+import { useState } from "react";
+
+function Example() {
+  const [items] = useState([1, 2, 3, 4]);
+  const total = items.length; // derived directly
+
+  return <p>Total items: {total}</p>;
+}
+```
+### Using derived state:
+```bash
+import { useState } from "react";
+
+function ProductList() {
+  const [products] = useState([
+    { name: "Laptop", price: 1200 },
+    { name: "Phone", price: 800 },
+    { name: "Tablet", price: 600 },
+  ]);
+  const [query, setQuery] = useState("");
+
+  // Derived state: depends on products + query
+  const filteredProducts = products.filter(p =>
+    p.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+  return (
+    <div>
+      <input
+        placeholder="Search..."
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+      />
+      <ul>
+        {filteredProducts.map(p => (
+          <li key={p.name}>{p.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+```
+
+---
+
+##  Lifting State Up in React:
+Lifting State Up in React is a fundamental concept that helps in sharing data between multiple components by moving the state to their closest common ancestor.
+
+When two or more components need to share or synchronize data, instead of keeping separate states in each component, we lift the state up to a parent component.
+
+![alt text](image1.PNG)
+
+
+#### ❌ Wrong Approach: Separate State in Each Component
+```bash
+function CelsiusInput() {
+  const [celsius, setCelsius] = useState('');
+  return <input value={celsius} onChange={(e) => setCelsius(e.target.value)} />;
+}
+
+function FahrenheitInput() {
+  const [fahrenheit, setFahrenheit] = useState('');
+  return <input value={fahrenheit} onChange={(e) => setFahrenheit(e.target.value)} />;
+}
+```
+
+#### ✅ Correct Approach: Lifting State Up
+```bash
+import { useState } from "react";
+
+function TemperatureConverter() {
+  const [temperature, setTemperature] = useState('');
+
+  function handleCelsiusChange(e) {
+    setTemperature(e.target.value);
+  }
+
+  function handleFahrenheitChange(e) {
+    const fahrenheit = e.target.value;
+    const celsius = ((fahrenheit - 32) * 5) / 9;
+    setTemperature(celsius);
+  }
+
+  const fahrenheit = (temperature * 9) / 5 + 32;
+
+  return (
+    <div>
+      <CelsiusInput value={temperature} onChange={handleCelsiusChange} />
+      <FahrenheitInput value={fahrenheit} onChange={handleFahrenheitChange} />
+    </div>
+  );
+}
+
+function CelsiusInput({ value, onChange }) {
+  return (
+    <div>
+      <label>Celsius:</label>
+      <input value={value} onChange={onChange} />
+    </div>
+  );
+}
+
+function FahrenheitInput({ value, onChange }) {
+  return (
+    <div>
+      <label>Fahrenheit:</label>
+      <input value={value} onChange={onChange} />
+    </div>
+  );
+}
+```
 
 
 
