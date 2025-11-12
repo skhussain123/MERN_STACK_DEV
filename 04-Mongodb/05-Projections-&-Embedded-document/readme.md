@@ -85,9 +85,69 @@ db.students.updateOne(
 )
 ```
 
+### Why Use Embedded Documents?
 | Reason                                       | Explanation                                        |
 | -------------------------------------------- | -------------------------------------------------- |
 | **1. Related data ek hi document me rakhna** | Taki joins ki zarurat na pade (MongoDB NoSQL hai). |
 | **2. Faster reads**                          | Ek hi document fetch karna padta hai.              |
 | **3. Data structure maintain hota hai**      | Hierarchical / JSON-like format me data rakhte ho. |
 
+### Example Summary
+| Concept        | Example                                   | Description                |
+| -------------- | ----------------------------------------- | -------------------------- |
+| Embedded field | `"address": { "city": "Lahore" }`         | Document inside a document |
+| Query          | `{ "address.city": "Lahore" }`            | Access nested value        |
+| Projection     | `{ "address.city": 1 }`                   | Show only city             |
+| Update         | `{ $set: { "address.city": "Karachi" } }` | Modify embedded field      |
+
+---
+
+## $all VS &elemMatch
+ye MongoDB array query operators me se do important aur similar lagne wale operators hain,
+
+![alt text](image3.PNG)
+
+| Feature           | `$all`                                             | `$elemMatch`                                                       |
+| ----------------- | -------------------------------------------------- | ------------------------------------------------------------------ |
+| **Use case**      | Jab array me **multiple values** hone chahiye      | Jab array ke **ek hi element** par multiple conditions lagani ho   |
+| **Checks**        | Array me **sab given values** maujood hain ya nahi | Array me **koi ek element** sab conditions match karta hai ya nahi |
+| **Works on**      | Simple arrays (values)                             | Arrays of documents (objects)                                      |
+| **Operator type** | Matching multiple values                           | Matching multiple conditions on one element                        |
+| **Example type**  | `[ "red", "blue", "green" ]`                       | `[ {type: "exam", score: 80}, {type: "quiz", score: 50} ]`         |
+
+### 1. $all — Check Multiple Values in Array
+
+#### Example Collection
+```bash
+{
+  _id: 1,
+  colors: ["red", "blue", "green"]
+}
+```
+
+
+```bash
+db.items.find({ colors: { $all: ["red", "green"] } })
+```
+* Find those documents jinke colors array me red aur green dono maujood hain (order matter nahi karta).
+
+
+### 2. $elemMatch — Match One Element That Meets Multiple Conditions
+
+#### Example Collection
+```bash
+{
+  _id: 1,
+  scores: [
+    { type: "exam", score: 90 },
+    { type: "quiz", score: 50 }
+  ]
+}
+```
+
+```bash
+db.students.find({
+  scores: { $elemMatch: { type: "exam", score: { $gt: 80 } } }
+})
+```
+* Find documents jinke scores array me ek hi element ho jisme type "exam" aur score 80 se zyada ho.
