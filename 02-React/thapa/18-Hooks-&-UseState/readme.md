@@ -89,6 +89,23 @@ export default Profile
 ---
 
 ## How React State Works
+State is an object that stores data that changes over time in a component.
+When the state changes, React re-renders that component (and its children, if needed).
+*The memory of a component that can change and trigger UI updates.*
+
+
+![alt text](image4.PNG)
+
+
+
+![alt text](image5.PNG)
+
+
+![alt text](image6.PNG)
+
+
+![alt text](image7.PNG)
+
 
 
 
