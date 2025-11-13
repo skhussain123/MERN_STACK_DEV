@@ -247,11 +247,58 @@ function FahrenheitInput({ value, onChange }) {
 ```
 
 
+![alt text](image9.PNG) 
+
+<br>
+
+![alt text](image8.PNG)
+
+```bash
+// App.jsx
+import './App.css';
+import { useState } from 'react';
+
+function App() {
+
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+
+  const handleIncrement = () => {
+    setCount(count + step);
+  }
+
+  const handlederement = () => {
+    if (count > 0) {
+      setCount(count - step);
+
+    }
+  }
+
+  const restCount = () => {
+    setCount(0);
+  }
+
+  const handdleStep = (value) => {
+    setStep(value)
+  }
 
 
+  return (
+    <>
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h2>Count: {count}</h2>
 
+        <input type="number" value={step} onChange={(event) => handdleStep(Number(event.target.value))} />
 
+        <button onClick={handleIncrement}>Increment</button>
+        <button onClick={handlederement}>Decrement</button>
+        <button onClick={restCount}>Rest Count</button>
+      </div>
+    </>
+  );
+}
 
-
+export default App;
+```
 
 
