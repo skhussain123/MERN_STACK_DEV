@@ -151,3 +151,205 @@ db.students.find({
 })
 ```
 * Find documents jinke scores array me ek hi element ho jisme type "exam" aur score 80 se zyada ho.
+
+---
+
+## Advanced Update Operations in MongoDB
+
+![alt text](image1-1.PNG)
+
+### 1. Basic Update Recap
+```bash
+db.collection.updateOne(
+  { _id: 1 },
+  { $set: { name: "Ali" } }
+)
+```
+* This replaces/sets the name field. But advanced operations let you manipulate arrays, multiple fields, or use aggregation logic.
+
+### 2. Field Update Operators
+#### a) $inc – Increment numeric fields
+
+```bash
+db.products.updateOne(
+  { name: "Laptop" },
+  { $inc: { stock: 5, price: -100 } }
+)
+```
+* Adds 5 to stock and decreases price by 100.
+
+#### b) $mul – Multiply numeric fields
+```bash
+db.products.updateOne(
+  { name: "Laptop" },
+  { $mul: { price: 1.1 } } // Increase price by 10%
+)
+```
+
+#### c) $rename – Rename a field
+```bash
+db.products.updateOne(
+  { name: "Laptop" },
+  { $rename: { "stock": "inventory" } }
+)
+```
+
+#### d) $min / $max – Update only if lower/higher
+```bash
+db.products.updateOne(
+  { name: "Laptop" },
+  { $min: { price: 900 } } // Sets price to 900 only if current price > 900
+)
+```
+
+### 3. Array Update Operators
+#### a) $push – Add elements to array
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $push: { scores: 95 } }
+)
+```
+
+#### b) $each – Push multiple elements
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $push: { scores: { $each: [85, 90] } } }
+)
+```
+
+#### c) $position – Insert at specific index
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $push: { scores: { $each: [100], $position: 0 } } }
+)
+
+```
+
+#### d) $addToSet – Add only if not exists (unique)
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $addToSet: { subjects: "Math" } }
+)
+
+```
+
+#### e) $pop – Remove first (-1) or last (1)
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $pop: { scores: -1 } } // removes first element
+)
+
+```
+
+#### f) $pull – Remove elements by condition
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $pull: { scores: { $lt: 50 } } } // remove all scores < 50
+)
+
+```
+
+#### g) $pullAll – Remove multiple values
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $pullAll: { scores: [60, 70] } }
+)
+
+```
+
+### 4. Using $ (Positional Operator)
+Update a specific array element matching a condition:
+
+```bash
+db.students.updateOne(
+  { "scores": 90 },
+  { $set: { "scores.$": 95 } } // replace first 90 with 95
+)
+```
+
+### 5. Array Filters (Advanced Positional Updates)
+For multiple array elements:
+```bash
+db.students.updateOne(
+  { name: "Ali" },
+  { $set: { "scores.$[elem]": 100 } },
+  { arrayFilters: [ { "elem": { $lt: 50 } } ] }
+)
+```
+* Sets all scores < 50 to 100.
+
+### 6. Upsert
+Creates document if it doesn’t exist:
+
+```bash
+db.products.updateOne(
+  { name: "Tablet" },
+  { $set: { price: 300, stock: 20 } },
+  { upsert: true }
+)
+```
+
+### 7. Update with Aggregation Pipeline (MongoDB 4.2+)
+You can use aggregation expressions inside updates:
+```bash
+db.products.updateOne(
+  { name: "Laptop" },
+  [
+    { $set: { price: { $multiply: ["$price", 1.1] } } }
+  ]
+)
+```
+* Here $price is multiplied by 1.1 using aggregation pipeline.
+
+### 8. Bulk Updates
+updateMany() – Update multiple documents:
+
+```bash
+db.students.updateMany(
+  { grade: "A" },
+  { $inc: { bonusPoints: 5 } }
+)
+```
+* bulkWrite() – Multiple operations in one call:
+
+```bash
+db.students.bulkWrite([
+  { updateOne: { filter: { name: "Ali" }, update: { $set: { grade: "B" } } } },
+  { updateOne: { filter: { name: "Sara" }, update: { $inc: { score: 10 } } } }
+])
+```
+
+
+
+
+
+
+
+
+
+### Summary
+
+| Operation                    | Purpose                            |
+| ---------------------------- | ---------------------------------- |
+| `$set`                       | Set/update field                   |
+| `$inc`                       | Increment numeric value            |
+| `$mul`                       | Multiply numeric value             |
+| `$rename`                    | Rename field                       |
+| `$min`/`$max`                | Conditional update based on value  |
+| `$push`                      | Add array element                  |
+| `$addToSet`                  | Add unique array element           |
+| `$pop`                       | Remove first/last array element    |
+| `$pull`                      | Remove array elements by condition |
+| `$pullAll`                   | Remove multiple array values       |
+| `$[]` / `$[<identifier>]`    | Update specific array elements     |
+| `upsert`                     | Insert if not exists               |
+| Aggregation Pipeline Updates | Complex field computation          |
+
+
