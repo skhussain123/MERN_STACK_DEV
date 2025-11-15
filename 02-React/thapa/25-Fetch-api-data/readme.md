@@ -55,3 +55,13 @@ function Counter() {
 
 export default Counter;
 ```
+
+---
+
+## Using Async Await & Try Catch to Fetch 
+```bash
+
+```
+
+
+

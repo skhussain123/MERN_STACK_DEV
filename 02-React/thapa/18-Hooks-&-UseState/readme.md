@@ -431,6 +431,68 @@ useEffect(() => {
 }, [count]);
 ```
 
+---
+
+## useRef Hook
+useRef React ka ek hook hai jo mutable value ko store karta hai without causing re-renders.
+
+![alt text](image12.PNG)
+
+<br>
+
+#### When to Use useRef?
+* Kisi DOM element ko directly access karna ho
+* Re-render bina value store karna ho
+* Previous value track karni ho
+* Timer/interval store karna ho
+
+### 1. DOM Elements ko Access Karna
+Agar aap kisi HTML element ko directly access karna chahtay hain (like input focus, scroll, video play), toh useRef best hai.
+```bash
+import { useRef } from "react";
+
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <>
+      <input ref={inputRef} type="text" />
+      <button onClick={focusInput}>Focus</button>
+    </>
+  );
+}
+```
+
+### 2. Re-render Bina Value Store Karna
+useRef me value change karne se component re-render nahi hota.
+Agar aap koi value track karna chahte hain, jo UI me reflect nahi karwani, useRef use hota hai.
+
+```bash
+const countRef = useRef(0);
+countRef.current = countRef.current + 1;
+```
+
+### 3. Previous Value Ko Track Karna
+useRef se aap previous props/state ko bhi store kar sakte hain.
+
+```bash
+const prevCount = useRef();
+
+useEffect(() => {
+  prevCount.current = count;
+}, [count]);
+
+```
+
+| Hook        | Purpose                          |
+| ----------- | -------------------------------- |
+| `useState`  | Value change → re-render         |
+| `useRef`    | Value change → **no re-render**  |
+| `useEffect` | Side effects (API calls, timers) |
 
 
 
