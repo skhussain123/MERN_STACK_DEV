@@ -324,6 +324,28 @@ useEffect(() => {
 
 ![alt text](image11.PNG)
 
+###  useEffect Hook with Dependency Array
+```bash
+import './App.css';
+import { useEffect, useState } from 'react';
 
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(count);
+  }, [count]);
+
+
+  return (
+    <>
+    <h1>{count}</h1>
+    <button onClick={()=> setCount(count + 1)}>increment</button>
+    </>
+  );
+}
+
+export default App;
+```
 
 
