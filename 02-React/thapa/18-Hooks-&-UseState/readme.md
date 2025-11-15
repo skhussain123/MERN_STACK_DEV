@@ -326,26 +326,112 @@ useEffect(() => {
 
 ###  useEffect Hook with Dependency Array
 ```bash
-import './App.css';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from "react";
 
-function App() {
+function Counter() {
   const [count, setCount] = useState(0);
 
+  // Jab count change ho to ye chalega
   useEffect(() => {
-    console.log(count);
+    console.log("Count updated:", count);
   }, [count]);
 
-
   return (
-    <>
-    <h1>{count}</h1>
-    <button onClick={()=> setCount(count + 1)}>increment</button>
-    </>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Count: {count}</h1>
+
+      <button onClick={() => setCount(count + 1)}>
+        +
+      </button>
+
+      <button onClick={() => setCount(count - 1)}>
+        -
+      </button>
+
+      <button onClick={() => setCount(0)}>
+        Reset
+      </button>
+    </div>
   );
 }
 
-export default App;
+export default Counter;
 ```
+
+## useEffect Cleanup Function
+useEffect ka Cleanup Function React me tab use hota hai jab aapko koi side-effect remove, unsubscribe, ya stop karna ho.
+React cleanup function ko component unmount hone par aur dependency change hone par call karta hai.
+
+```bash
+useEffect(() => {
+  // side effect
+
+  return () => {
+    // cleanup code
+  };
+}, []);
+```
+
+### 1️⃣ setInterval / setTimeout ko clear karna
+```bash
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log("Running...");
+  }, 1000);
+
+  // Cleanup
+  return () => {
+    clearInterval(interval);
+    console.log("Interval cleared!");
+  };
+}, []);
+
+```
+
+### 2️⃣ Event Listener remove karna
+```bash
+useEffect(() => {
+  const handleResize = () => {
+    console.log("Window resized");
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+}, []);
+
+```
+
+### 3️⃣ API abort controller (fetch cancel)
+```bash
+useEffect(() => {
+  const controller = new AbortController();
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    signal: controller.signal
+  });
+
+  return () => controller.abort();  // cancel request
+}, []);
+
+```
+
+## Dependency Change Par Cleanup
+Jab dependency change hoti hai, pehle cleanup run hota hai, phir effect phir se run hotta hai.
+
+```bash
+useEffect(() => {
+  console.log("Effect:", count);
+
+  return () => {
+    console.log("Cleanup before next effect");
+  };
+}, [count]);
+```
+
+
+
 
 
