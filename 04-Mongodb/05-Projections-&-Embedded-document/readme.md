@@ -352,4 +352,34 @@ db.students.bulkWrite([
 | `upsert`                     | Insert if not exists               |
 | Aggregation Pipeline Updates | Complex field computation          |
 
+---
+## Delete Operations in MongoDB
+
+```bash
+db.students.deleteOne({ name: "Ali" })
+```
+* Deletes the first student document where name is "Ali".
+
+
+```bash
+db.students.deleteMany({ grade: "F" })
+```
+* Removes all students with grade “F”.
+
+
+```bash
+db.students.deleteMany({})
+```
+* If you want to delete every document from a collection (but keep the collection itself):
+
+```bash
+db.collection.drop()
+```
+* Removes the collection completely from the database.
+
+```bash
+db.dropDatabase()
+```
+* Removes the current database entirely.
+
 
