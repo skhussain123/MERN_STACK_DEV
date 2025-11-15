@@ -495,5 +495,33 @@ useEffect(() => {
 | `useEffect` | Side effects (API calls, timers) |
 
 
+---
 
+## useId Hook
+useId React ka built-in hook hai jo unique, stable IDs generate karta hai — especially accessibility (A11y) ke liye useful.
+
+
+![alt text](image13.PNG)
+
+### useId kya karta hai?
+* Har component render per unique ID banata hai
+* Server Side Rendering (SSR) aur hydration me consistent ID generate karta hai
+* Form controls / labels ko correctly pair karne me help karta hai
+* Client aur server IDs mismatch nahi hote
+
+
+```bash
+import { useId } from "react";
+
+function Form() {
+  const id = useId();
+
+  return (
+    <div>
+      <label htmlFor={id}>Username</label>
+      <input id={id} type="text" />
+    </div>
+  );
+}
+```
 
