@@ -301,4 +301,29 @@ function App() {
 export default App;
 ```
 
+## useEffect Hook (React)
+useEffect React ka ek powerful Hook hai jo side effects handle karne ke liye use hota hai
+
+* API calls
+* DOM manipulation
+* Event listeners add/remove
+* Local Storage operations
+* Timers (setTimeout, setInterval)
+
+<br>
+
+![alt text](image10.PNG)
+
+
+### Basic Syntax
+```bash
+useEffect(() => {
+  // Side effect code
+});
+```
+
+![alt text](image11.PNG)
+
+
+
 
