@@ -38,18 +38,81 @@ function GrandChild({ user }) {
 ```
 
 ---
-## How to Avoid Prop Drilling
+## How to Avoid Prop Drilling (React Context API)
 React ne is problem ko solve karne ke liye kuch tools diye hai
 
 ### 1. React Context API
+React Context API ek aisa feature hai jo props drilling ko avoid karne ke liye use hota hai. Jab aapko data ko parent → child → grandchild → deeper components tak bhejna ho aur har step pe props pass na karna chahe, to Context API use hota hai.
+
+<br>
+
 ![alt text](image2.PNG)
 
 <br>
 
 ![alt text](image3.PNG)
 
-```bash
 
+#### src/contexts/UserContext.js
+```bash
+import { createContext } from "react";
+export const UserContext = createContext(null); // default value optional
 ```
 
+#### src/providers/UserProvider.jsx
+```bash
+import React, { useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 
+export default function UserProvider({ children }) {
+  const [user, setUser] = useState("Muhammad Hussain");
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
+```
+
+#### src/components/Profile.jsx
+```bash
+import React, { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+
+function Profile() {
+  const { user } = useContext(UserContext);
+
+  return <h1>Hello, {user}</h1>;
+}
+
+export default Profile;
+```
+
+#### src/App.jsx
+```bash
+import React, { useContext } from "react";
+import UserProvider from "./providers/UserProvider";
+import Profile from "./components/Profile";
+import { UserContext } from "./contexts/UserContext";
+
+function InnerApp() {
+  // example showing setUser usage
+  const { setUser } = useContext(UserContext);
+
+  return (
+    <div>
+      <Profile />
+      <button onClick={() => setUser("Ali Khan")}>Change User</button>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <UserProvider>
+      <InnerApp />
+    </UserProvider>
+  );
+}
+```
