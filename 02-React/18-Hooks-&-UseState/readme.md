@@ -25,7 +25,7 @@ State is used for data that only a specific component needs, like whether a drop
 React prefers declarative UI logic. Rather than using DOM methods to manually update elements, you update the state, and React handles rendering.
 
 
-### 1. What is State in React
+# 1. What is UseState in React
 State in React is a built-in object that stores dynamic data in a component. It determines how that component behaves and how it renders. When the state changes, React automatically re-renders the component to reflect the new data.
 
 * State is a Container to store data like variable. 
@@ -301,7 +301,7 @@ function App() {
 export default App;
 ```
 
-## useEffect Hook (React)
+# 2 useEffect Hook (React)
 useEffect React ka ek powerful Hook hai jo side effects handle karne ke liye use hota hai
 
 * API calls
@@ -433,7 +433,7 @@ useEffect(() => {
 
 ---
 
-## useRef Hook
+# 3 useRef Hook
 useRef React ka ek hook hai jo mutable value ko store karta hai without causing re-renders.
 
 ![alt text](image12.PNG)
@@ -497,7 +497,7 @@ useEffect(() => {
 
 ---
 
-## useId Hook
+# 4. useId Hook
 useId React ka built-in hook hai jo unique, stable IDs generate karta hai — especially accessibility (A11y) ke liye useful.
 
 
@@ -523,5 +523,111 @@ function Form() {
     </div>
   );
 }
+```
+
+---
+
+# 5. useReducer HooK
+useReducer is a React Hook used for complex state management — especially when the state has multiple sub-values or update logic is complicated.
+
+### When to Use useReducer Instead of useState?
+* ✔ State is an object
+* ✔ State updates depend on previous state
+* ✔ Multiple actions update the same state
+* ✔ Logic is complex
+
+
+#### Basic Syntax
+```bash
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+#### Complete Example — Counter with useReducer
+```bash
+import { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+
+    case "decrement":
+      return { count: state.count - 1 };
+
+    case "reset":
+      return { count: 0 };
+
+    default:
+      return state;
+  }
+}
+
+export default function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <h2>Count: {state.count}</h2>
+      
+      <button onClick={() => dispatch({ type: "increment" })}>
+        +
+      </button>
+
+      <button onClick={() => dispatch({ type: "decrement" })}>
+        -
+      </button>
+
+      <button onClick={() => dispatch({ type: "reset" })}>
+        Reset
+      </button>
+    </div>
+  );
+}
+
+```
+
+#### Example — useReducer for Form Handling
+```bash
+const initialState = {
+  name: "",
+  email: ""
+};
+
+function reducer(state, action) {
+  return { ...state, [action.field]: action.value };
+}
+
+function FormDemo() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleChange = (e) => {
+    dispatch({
+      field: e.target.name,
+      value: e.target.value,
+    });
+  };
+
+  return (
+    <>
+      <input
+        name="name"
+        value={state.name}
+        onChange={handleChange}
+      />
+
+      <input
+        name="email"
+        value={state.email}
+        onChange={handleChange}
+      />
+
+      <p>Name: {state.name}</p>
+      <p>Email: {state.email}</p>
+    </>
+  );
+}
+
 ```
 
