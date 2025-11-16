@@ -1,4 +1,9 @@
 ### 1. Third Example Element Show Hide
+
+![alt text](image1.PNG)
+
+<br>
+
 ```bash
 import { useState } from "react";
 

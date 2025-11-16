@@ -7,6 +7,8 @@ It helps MongoDB find documents faster, just like the index at the back of a boo
 
 Without an index, MongoDB performs a collection scan, checking every document — which is slow for large collections.
 
+* Without an index → MongoDB must perform a COLLECTION SCAN (slow).
+* With an index → MongoDB performs an INDEX SCAN (fast).
 
 ### Why Use Indexes?
 * ✅ Improves query performance

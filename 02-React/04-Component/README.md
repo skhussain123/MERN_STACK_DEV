@@ -4,6 +4,12 @@
 A React Component is a reusable piece of UI (User Interface). It's like a JavaScript function or class that returns HTML using JSX.
 * "React component ek block hai jo HTML, CSS, and JavaScript ko combine karke UI ka ek hissa banata hai."
 
+![alt text](image2.PNG)
+
+<br>
+
+![alt text](image3.PNG)
+
 ### There are 2 Types of Components:
 #### 1. Functional Component (Most Common)
 #### 2. Class Component (Less Common Now)

@@ -5,11 +5,16 @@ JSX (JavaScript XML) is a syntax extension for JavaScript commonly used in React
 * JSX = JavaScript + XML-like tags
 It makes writing UI components easier and more readable.
 
+
+![alt text](image1.PNG)
+
+
 **You can work with different files in React**
 1. jSX File (javascript + XML)
 2. jS File
 3. TS File
 4. TSX
+
 
 #### JSX:
 ```bash
