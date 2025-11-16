@@ -72,3 +72,20 @@
 
 <br>
 
+# Ab Compass sy connect kr rahy ha.
+
+
+![alt text](image11.PNG)
+
+<br>
+
+ ![alt text](image12.PNG)
+
+
+#### open Mongodb Compass on your local machine
+
+![alt text](image14.PNG)
+
+<br>
+
+![alt text](image13.PNG)
