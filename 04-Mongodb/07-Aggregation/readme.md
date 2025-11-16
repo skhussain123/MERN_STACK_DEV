@@ -90,3 +90,21 @@ db.products.aggregate([
 
 
 
+```bash
+db.products.aggregate([
+  {
+    $group: {
+      _id: "Category B",
+      productNames: { $push: "$name" },   // Push all product names into an array
+      prices: { $push: "$price" }         // Push all prices into an array
+    }
+  },
+  {
+    $project: {
+      productNames: 1,
+      prices: { $slice: ["$prices", 0, -1] }  // Mimic $pop to remove the last element
+    }
+  }
+])
+```
+
