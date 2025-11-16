@@ -1,5 +1,5 @@
 
-##  What is an Index?
+#  What is an Index?
 
 An index in MongoDB is a special data structure (usually a B-tree) that stores a small portion of the collection’s data in an easy-to-search form.
 
@@ -10,6 +10,9 @@ Without an index, MongoDB performs a collection scan, checking every document �
 * Without an index → MongoDB must perform a COLLECTION SCAN (slow).
 * With an index → MongoDB performs an INDEX SCAN (fast).
 
+
+![alt text](image1.PNG)
+
 ### Why Use Indexes?
 * ✅ Improves query performance
 * ✅ Supports efficient sorting
@@ -17,3 +20,27 @@ Without an index, MongoDB performs a collection scan, checking every document �
 * ✅ Reduces CPU and memory load
 
 
+
+## Single Field Index
+```bash
+db.users.createIndex({ email: 1 })
+```
+* 1 = ascending
+* -1 = descending
+
+### Search result
+```bash
+db.users.find({ email: "test@gmail.com" }).explain("executionStats")
+```
+
+## Compound Index (Multiple Fields)
+```bash
+db.users.createIndex({ name: 1, age: -1 })
+```
+
+### Search result
+```bash
+db.users.find({ name: "Ali", age: 20 })
+```
+
+![alt text](image2.PNG)
