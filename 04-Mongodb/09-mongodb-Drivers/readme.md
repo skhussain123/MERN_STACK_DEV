@@ -52,3 +52,5 @@ run();
 ```bash
 node index.js
 ```
+
+![alt text](image1.PNG)
