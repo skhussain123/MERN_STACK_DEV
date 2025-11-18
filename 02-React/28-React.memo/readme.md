@@ -76,3 +76,20 @@ issue ye ha jab me increment button pr click kroga to MemoCount Component me isk
 ```bash
 <p>MemoCount Rendered: {renderCount.current} times</p>
 ```
+
+### Agr hum chahty ha ReactMemo Component ke sath MemoCount Component Rerender na ho yo
+```bash
+import { memo, useRef } from "react";
+
+function MemoCount() {  
+    const renderCount = useRef(0);
+
+    renderCount.current++;
+    console.log("MemoCount Render:", renderCount.current);
+
+    return <p>MemoCount Rendered: {renderCount.current} times</p>;
+}
+
+export default memo(MemoCount);
+```
+* memo ki wajy sy ab humara Clild Component render nh hoga.
