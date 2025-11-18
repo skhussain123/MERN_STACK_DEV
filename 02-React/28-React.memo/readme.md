@@ -92,4 +92,150 @@ function MemoCount() {
 
 export default memo(MemoCount);
 ```
-* memo ki wajy sy ab humara Clild Component render nh hoga.
+* memo ki wajy sy ab humara Clild Component unnecessary render nh hoga.
+
+
+---
+
+## useMemo Hook in React 19
+
+![alt text](image2.PNG)
+
+<br>
+
+useMemo React ka ek hook hai jo expensive (mehngi) calculations ko memoize karta hai — yani ke result ko yaad rakh leta hai taake har render par dobara calculation na karni pade.
+
+* useMemo ka matlab hota hai “memoized value use karna”.
+
+React har render par function component ko dobara chalata hai. Agar component me koi heavy calculation, large array filtering, complex loops, ya expensive compute ho, to har render par woh calculation dobara chalti hai — jisse app slow ho sakti hai.
+
+* useMemo is calculation ka result save kar leta hai.
+*  Dobara tabhi calculate hota hai jab dependency change ho.
+
+### UseMemo.jsx
+```bash
+import { useState } from "react";
+
+const ExpensiveComponent = () => {
+    // Expensive calculation function (synchronous, blocking)
+    const sum = () => {
+        console.log("Calculating sum...");
+        const LIMIT = 100_000_000;
+        let total = 0;
+        for (let i = 0; i < LIMIT; i++) {
+            total += i;
+        }
+        return total;
+    };
+
+    // calling directly (without useMemo)
+    const total = sum();
+
+    return <p> sum: {total} </p>;
+};
+
+const UseMemo = () => {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div className="p-4 h-lvh font-display tracking-wider flex flex-col justify-center items-center bg-black text-white">
+            <ExpensiveComponent />
+            <button
+                onClick={() => setCount((c) => c + 1)}
+                className="py-3 px-6 bg-cyan-400 rounded-sm mt-4"
+            >
+                Re-render Parent
+            </button>
+            <p className="mt-2">Parent re-renders: {count}</p>
+        </div>
+    );
+};
+
+export default UseMemo;
+
+```
+
+* Agr hun Without UseMemo use krny ha ye code jab bhi hum increment button pr click krengy to. State Update hony ki wajy se
+UseMemo ka Component rerender hoga. Sath he ExpensiveComponent ke rednder ho jayega. (halaky ExpensiveComponent render nhi hoga chahye tha)
+
+### App.jsx
+```bash
+import UseMemo from "./Memo/UseMemo";
+
+function App() {
+  return (
+    <>
+      <UseMemo />
+    </>
+  );
+}
+
+export default App;
+```
+
+### Example With UseMemo
+#### Method one 
+* Ye ha ke ap memo use krle sirf ExpensiveComponent me. baki sub wasy he rehny de
+```bash
+const ExpensiveComponent = memo(() => {
+    // Expensive calculation function (synchronous, blocking)
+    const sum = () => {
+        console.log("Calculating sum...");
+        const LIMIT = 100_000_000;
+        let total = 0;
+        for (let i = 0; i < LIMIT; i++) {
+            total += i;
+        }
+        return total;
+    };
+
+    // calling directly (without useMemo)
+    const total = sum();
+
+    return <p> sum: {total} </p>;
+});
+```
+
+#### Method two
+```bash
+import { memo, useMemo, useState } from "react";
+
+const ExpensiveComponent = () => {
+    // Expensive calculation function (synchronous, blocking)
+    const sum = () => {
+        console.log("Calculating sum...");
+        const LIMIT = 100_000_000;
+        let total = 0;
+        for (let i = 0; i < LIMIT; i++) {
+            total += i;
+        }
+        return total;
+    };
+
+    const total = useMemo(() => sum(), []);
+
+    return <p> sum: {total} </p>;
+};
+
+const UseMemo = () => {
+    const [count, setCount] = useState(0);
+
+    return (
+        <div className="p-4 h-lvh font-display tracking-wider flex flex-col justify-center items-center bg-black text-white">
+            <ExpensiveComponent />
+            <button
+                onClick={() => setCount((c) => c + 1)}
+                className="py-3 px-6 bg-cyan-400 rounded-sm mt-4"
+            >
+                Re-render Parent
+            </button>
+            <p className="mt-2">Parent re-renders: {count}</p>
+        </div>
+    );
+};
+
+export default UseMemo;
+```
+
+
+
