@@ -14,7 +14,7 @@ React.memo is a higher-order component in React that helps optimize performance 
 ### Agr React Memo use nahi kry to ye issue ayega.
 
 #### App.jsx
-```bash
+```javascript
 import { MemoCount } from "./Memo/MemoCount";
 import { ReactMemo } from "./Memo/ReactMemo";
 
@@ -32,7 +32,7 @@ export default App;
 ```
 
 #### ReactMemo
-```bash
+```javascript
 import { useState } from "react";
 import { MemoCount } from "./MemoCount";
 
@@ -53,7 +53,7 @@ export function ReactMemo() {
 ```
 
 ### MemoCount.jsx
-```bash
+```javascript
 import { useRef } from "react";
 
 export function MemoCount() {
@@ -78,7 +78,7 @@ issue ye ha jab me increment button pr click kroga to MemoCount Component me isk
 ```
 
 ### Agr hum chahty ha ReactMemo Component ke sath MemoCount Component Rerender na ho yo
-```bash
+```javascript
 import { memo, useRef } from "react";
 
 function MemoCount() {  
@@ -113,7 +113,7 @@ React har render par function component ko dobara chalata hai. Agar component me
 *  Dobara tabhi calculate hota hai jab dependency change ho.
 
 ### UseMemo.jsx (use mamo function me value optimze krny ke liye use hota ha)
-```bash
+```javascript
 import { useState } from "react";
 
 const ExpensiveComponent = () => {
@@ -159,7 +159,7 @@ export default UseMemo;
 UseMemo ka Component rerender hoga. Sath he ExpensiveComponent ke rednder ho jayega. (halaky ExpensiveComponent render nhi hoga chahye tha)
 
 ### App.jsx
-```bash
+```javascript
 import UseMemo from "./Memo/UseMemo";
 
 function App() {
@@ -176,7 +176,7 @@ export default App;
 ### Example With UseMemo
 #### Method one 
 * Ye ha ke ap memo use krle sirf ExpensiveComponent me. baki sub wasy he rehny de
-```bash
+```javascript
 const ExpensiveComponent = memo(() => {
     // Expensive calculation function (synchronous, blocking)
     const sum = () => {
@@ -197,7 +197,7 @@ const ExpensiveComponent = memo(() => {
 ```
 
 #### Method two
-```bash
+```javascript
 import { memo, useMemo, useState } from "react";
 
 const ExpensiveComponent = () => {
@@ -253,7 +253,7 @@ Agar Parent re-render ho, to normally Child bhi re-render hota hai. React.memo()
 “Agar props same hain, render mat kar!”
 
 #### Example: React.memo
-```bash
+```javascript
 import React, { useState, memo } from "react";
 
 const Child = memo(({ count }) => {
@@ -291,7 +291,7 @@ export default function App() {
 * useMemo calculation ka result cache kar deta hai aur sirf tab run karta hai jab dependency change ho.
 
 #### Example: useMemo
-```bash
+```javascript
 import React, { useState, useMemo } from "react";
 
 export default function App() {
@@ -353,7 +353,7 @@ Function ko tab tak same rakhta hai jab tak dependencies change na hon.
 
 ### Example Without useCallback
 ##### App.jsx
-```bash
+```javascript
 import { useState } from "react";
 import Child from "./Child";
 
@@ -377,7 +377,7 @@ export default function App() {
 
 ```
 ##### Child.jsx
-```bash
+```javascript
 import { memo } from "react";
 
 function Child({ onClick }) {
@@ -389,7 +389,7 @@ export default memo(Child);
 ```
 
 ### Now Use useCallback
-```bash
+```javascript
 import { useState, useCallback } from "react";
 import Child from "./Child";
 
