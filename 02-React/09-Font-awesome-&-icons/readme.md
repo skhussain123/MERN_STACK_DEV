@@ -1,7 +1,7 @@
 
 
 ## First Install
-```bash
+```javascript
 npm i --save @fortawesome/fontawesome-svg-core
 
 npm install --save @fortawesome/free-solid-svg-icons
@@ -50,7 +50,7 @@ Usko manually batana padta hai —
 
 https://www.npmjs.com/package/react-icons
 
-```bash
+```javascript
 npm i react-icons
 ```
 

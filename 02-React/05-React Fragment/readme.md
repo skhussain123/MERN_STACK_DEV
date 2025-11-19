@@ -9,7 +9,7 @@ A React Fragment is a special type of component in React that lets you group mul
 #### Normally, React components must return a single parent element.
 * For example, this will cause an error:
 
-```bash
+```javascript
 function App() {
   return (
     <h1>Hello</h1>
@@ -19,7 +19,7 @@ function App() {
 ```
 * React requires one root element, so you might be tempted to wrap them in a <div>:
 
-```bash
+```javascript
 function App() {
   return (
     <div>
@@ -32,7 +32,7 @@ function App() {
 * But this adds an unnecessary <div> to the DOM, which can mess up layouts or CSS.
 
 ### Solution: React Fragment
-```bash
+```javascript
 function App() {
   return (
     <React.Fragment>
@@ -44,7 +44,7 @@ function App() {
 ```
 
 * React also provides a shorthand version using empty angle brackets:
-```bash
+```javascript
 function App() {
   return (
     <>
@@ -55,7 +55,7 @@ function App() {
 }
 ```
 
-```bash
+```javascript
 const items = ['Apple', 'Banana', 'Cherry'];
 
 function List() {

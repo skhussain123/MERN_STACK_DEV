@@ -13,7 +13,7 @@ A controlled component is a form element (like <input>, <textarea>, <select>) wh
 * React is the single source of truth for the input’s value.
 * You update the state using onChange events.
 
-```bash
+```javascript
 import { useState } from "react";
 
 function ControlledInput() {
@@ -48,7 +48,7 @@ An uncontrolled component is a form element where React does not control its val
 * The DOM itself handles the input value.
 * To get the value, you use a ref (useRef).
 
-```bash
+```javascript
 import { useRef } from "react";
 
 function UncontrolledInput() {

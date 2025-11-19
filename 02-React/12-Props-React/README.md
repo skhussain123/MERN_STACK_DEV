@@ -16,7 +16,7 @@ Props (short for "properties") are read-only inputs passed from one component (u
 
 ## 1. Send Data One Component to another Component
 #### App Component
-```bash
+```javascript
 import User from "./User"
 
 function App() {
@@ -38,7 +38,7 @@ export default App
 ```
 
 #### User Component
-```bash
+```javascript
 function User(props) {
   return (
     <div>
@@ -58,7 +58,7 @@ export default User;
 ---
 
 ## 2. Send Object , Array
-```bash
+```javascript
 import { useState } from "react";
 import College from "./Component/College";
 import User from "./User"
@@ -95,7 +95,7 @@ export default App
 ```
 
 #### User Component 
-```bash
+```javascript
 function User({ user}) {
 
   return (
@@ -115,7 +115,7 @@ export default User;
 ```
 
 #### College Component
-```bash
+```javascript
 
 function College(user) {
     return (
@@ -133,7 +133,7 @@ export default College
 
 ## 3. When Button Click then Pass data to Component
 ### App Component
-```bash
+```javascript
 import { useState } from "react";
 import Student from "./Component/Student";
 
@@ -158,7 +158,7 @@ export default App
 ```
 
 #### Student Component
-```bash
+```javascript
 function Student(props) {
 
     return (
@@ -288,7 +288,7 @@ export default Student
 
 ## 6. Default Value 
 ### App Component
-```bash
+```javascript
 import User from "./User"
 
 function App() {
@@ -308,7 +308,7 @@ export default App
 ```
 
 ### User Component
-```bash
+```javascript
 function User({ name}) {
 
   return (
@@ -326,7 +326,7 @@ export default User;
 ## 7. pass jsx with props
 ### App Component
 
-```bash
+```javascript
 import Wrapper from "./Component/Wrapper"
 function App() {
 
@@ -353,7 +353,7 @@ export default App
 ```
 
 ### Wrapper Component
-```bash
+```javascript
 function Wrapper({children,color='orange'}) {
     return (
         <div style={{ color: color, border: "5px solid black" }}>

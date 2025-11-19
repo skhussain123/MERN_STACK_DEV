@@ -4,7 +4,7 @@
 
 <br>
 
-```bash
+```javascript
 import { useState } from "react";
 
 function Profile() {
@@ -27,7 +27,7 @@ export default Profile
 ```
 
 ### 2. fouth Example Component Show Hide
-```bash
+```javascript
 import { useState } from "react";
 import User from "./User";
 
@@ -51,7 +51,7 @@ export default Profile
 ```
 
 ### 3. Multiple Condition in React
-```bash
+```javascript
 import { useState } from "react";
 
 function Profile() {

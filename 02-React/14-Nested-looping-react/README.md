@@ -6,7 +6,7 @@
 * Make component for inner loop
 
 ### App.jsx
-```bash
+```javascript
 import College from "./Component/College"
 
 function App() {
@@ -103,7 +103,7 @@ export default App
 ```
 
 ### College.jsx
-```bash
+```javascript
 function College({ college }) {
 
     return (
@@ -129,7 +129,6 @@ function College({ college }) {
         </div>
     )
 }
-
 
 export default College
 ```

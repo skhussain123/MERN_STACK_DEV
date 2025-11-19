@@ -8,7 +8,7 @@ When React renders a list (like items in a <ul> or rows in a table), it needs a 
 
 Keys help React efficiently update the UI by reusing DOM elements instead of re-rendering the entire list.
 
-```bash
+```javascript
 function TodoList({ todos }) {
   return (
     <ul>
@@ -23,7 +23,7 @@ Here, React has no way to tell which <li> corresponds to which todo.
 If you add, remove, or reorder items, React might mix up DOM nodes, causing bugs.
 
 ### ✅ Example With Keys
-```bash
+```javascript
 function TodoList({ todos }) {
   return (
     <ul>

@@ -17,7 +17,7 @@ A React Component is a reusable piece of UI (User Interface). It's like a JavaSc
 ## Functional Component
 ### Functional Component (Most Common) this is a Default export component
 * Create / src/Profile.jsx
-```bash
+```javascript
 function Profile() {
     return (
         <div>
@@ -30,7 +30,7 @@ export default Profile
 ```
 
 * Use main.jsx
-```bash
+```javascript
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
@@ -45,7 +45,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 ## Class Component
-```bash
+```javascript
 import React from 'react';
 
 class App extends React.Component {
@@ -70,7 +70,7 @@ export default App;
 
 ##### Named Export
 * Create / src/Profile.jsx
-```bash
+```javascript
 export function Profile() {
     return (
         <div>
@@ -82,7 +82,7 @@ export function Profile() {
 ```
 
 * Use main.jsx
-```bash
+```javascript
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
@@ -97,7 +97,7 @@ createRoot(document.getElementById('root')).render(
 ```
 
 ##### Default Export
-```bash
+```javascript
 function Profile() {
     return (
         <div>
@@ -110,7 +110,7 @@ export default Profile
 ```
 
 * Use main.jsx
-```bash
+```javascript
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'

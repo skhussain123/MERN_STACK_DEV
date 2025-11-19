@@ -1,7 +1,7 @@
 
 
 ## Fetch API Data 
-```bash
+```javascript
 import { useState, useEffect } from "react";
 
 function Counter() {
@@ -59,7 +59,7 @@ export default Counter;
 ---
 
 ## Using Async Await & Try Catch to Fetch 
-```bash
+```javascript
 import { useState, useEffect } from "react";
 
 function Counter() {

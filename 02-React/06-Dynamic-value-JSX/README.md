@@ -5,7 +5,7 @@
 * object and array with jsx
 * html tag property with jsx
 
-```bash
+```javascript
 function Profile() {
 
     // Variables

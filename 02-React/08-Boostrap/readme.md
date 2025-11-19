@@ -6,12 +6,12 @@
 ---
 
 ### 1. Method one
-```bash
+```javascript
 npm install bootstrap
 ```
 
 #### Add src/main.jsx
-```bash
+```javascript
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js' 
 ```
@@ -26,11 +26,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 ---
 
 ### 3. Method three (React Component Base)
-```bash
+```javascript
 npm install react-bootstrap
 ```
 **You Can use it**
-```bash
+```javascript
 <Container>
         <Row>
           <p>Hello World</p>

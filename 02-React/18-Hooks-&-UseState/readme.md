@@ -10,7 +10,7 @@
 * State eik inmutable process ha jisy State ko change nhi kr sakty. 
 * State ko Change krny ka kam State ka function kryga --> jasy setCount
 * State is a hooks ho component ko re render krke dynamically data component me dekhata ha
-```bash
+```javascript
 const [count, setCount] = useState(0);
 ```
 
@@ -34,12 +34,12 @@ State in React is a built-in object that stores dynamic data in a component. It 
 * it re,render component automatically so that data can visible on ui
 
 State ko hum hooks ki help se use kr sakty hain. hooks wo hoty hain jo use sy start hoty hain jasy.
-```bash
+```javascript
 import { useState, useEffect,useContext } from "react";
 ```
 
 ### Simple State Concept
-```bash
+```javascript
 import { useState } from "react"
 
 function Profile() {
@@ -60,7 +60,7 @@ export default Profile
 ```
 
 ### Second Example
-```bash
+```javascript
 import { useState } from "react";
 
 function Profile() {
@@ -115,7 +115,7 @@ Derived State means state that is computed from other existing state or props, i
 If you can calculate a value from existing state or props, you don’t need to store it as new state — you just derive it when rendering.
 
 ### ❌ Bad: Redundant state
-```bash
+```javascript
 import { useState } from "react";
 
 function Example() {
@@ -132,7 +132,7 @@ function Example() {
 ```
 
 ### Good: Derive instead of storing
-```bash
+```javascript
 import { useState } from "react";
 
 function Example() {
@@ -143,7 +143,7 @@ function Example() {
 }
 ```
 ### Using derived state:
-```bash
+```javascript
 import { useState } from "react";
 
 function ProductList() {
@@ -188,7 +188,7 @@ When two or more components need to share or synchronize data, instead of keepin
 
 
 #### ❌ Wrong Approach: Separate State in Each Component
-```bash
+```javascript
 function CelsiusInput() {
   const [celsius, setCelsius] = useState('');
   return <input value={celsius} onChange={(e) => setCelsius(e.target.value)} />;
@@ -201,7 +201,7 @@ function FahrenheitInput() {
 ```
 
 #### ✅ Correct Approach: Lifting State Up
-```bash
+```javascript
 import { useState } from "react";
 
 function TemperatureConverter() {
@@ -253,7 +253,7 @@ function FahrenheitInput({ value, onChange }) {
 
 ![alt text](image8.PNG)
 
-```bash
+```javascript
 // App.jsx
 import './App.css';
 import { useState } from 'react';
@@ -316,7 +316,7 @@ useEffect React ka ek powerful Hook hai jo side effects handle karne ke liye use
 
 
 ### Basic Syntax
-```bash
+```javascript
 useEffect(() => {
   // Side effect code
 });
@@ -325,7 +325,7 @@ useEffect(() => {
 ![alt text](image11.PNG)
 
 ###  useEffect Hook with Dependency Array
-```bash
+```javascript
 import { useState, useEffect } from "react";
 
 function Counter() {
@@ -362,7 +362,7 @@ export default Counter;
 useEffect ka Cleanup Function React me tab use hota hai jab aapko koi side-effect remove, unsubscribe, ya stop karna ho.
 React cleanup function ko component unmount hone par aur dependency change hone par call karta hai.
 
-```bash
+```javascript
 useEffect(() => {
   // side effect
 
@@ -389,7 +389,7 @@ useEffect(() => {
 ```
 
 ### 2️⃣ Event Listener remove karna
-```bash
+```javascript
 useEffect(() => {
   const handleResize = () => {
     console.log("Window resized");
@@ -405,7 +405,7 @@ useEffect(() => {
 ```
 
 ### 3️⃣ API abort controller (fetch cancel)
-```bash
+```javascript
 useEffect(() => {
   const controller = new AbortController();
 
@@ -421,7 +421,7 @@ useEffect(() => {
 ## Dependency Change Par Cleanup
 Jab dependency change hoti hai, pehle cleanup run hota hai, phir effect phir se run hotta hai.
 
-```bash
+```javascript
 useEffect(() => {
   console.log("Effect:", count);
 
@@ -448,7 +448,7 @@ useRef React ka ek hook hai jo mutable value ko store karta hai without causing 
 
 ### 1. DOM Elements ko Access Karna
 Agar aap kisi HTML element ko directly access karna chahtay hain (like input focus, scroll, video play), toh useRef best hai.
-```bash
+```javascript
 import { useRef } from "react";
 
 function MyComponent() {
@@ -471,7 +471,7 @@ function MyComponent() {
 useRef me value change karne se component re-render nahi hota.
 Agar aap koi value track karna chahte hain, jo UI me reflect nahi karwani, useRef use hota hai.
 
-```bash
+```javascript
 const countRef = useRef(0);
 countRef.current = countRef.current + 1;
 ```
@@ -479,7 +479,7 @@ countRef.current = countRef.current + 1;
 ### 3. Previous Value Ko Track Karna
 useRef se aap previous props/state ko bhi store kar sakte hain.
 
-```bash
+```javascript
 const prevCount = useRef();
 
 useEffect(() => {
@@ -510,7 +510,7 @@ useId React ka built-in hook hai jo unique, stable IDs generate karta hai — es
 * Client aur server IDs mismatch nahi hote
 
 
-```bash
+```javascript
 import { useId } from "react";
 
 function Form() {
@@ -538,12 +538,12 @@ useReducer is a React Hook used for complex state management — especially when
 
 
 #### Basic Syntax
-```bash
+```javascript
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
 #### Complete Example — Counter with useReducer
-```bash
+```javascript
 import { useReducer } from "react";
 
 const initialState = { count: 0 };
@@ -589,7 +589,7 @@ export default function Counter() {
 ```
 
 #### Example — useReducer for Form Handling
-```bash
+```javascript
 const initialState = {
   name: "",
   email: ""

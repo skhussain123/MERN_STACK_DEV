@@ -17,12 +17,12 @@ It makes writing UI components easier and more readable.
 
 
 #### JSX:
-```bash
+```javascript
 const element = <h1>Hello World</h1>;
 ```
 
 #### JSX Code Example in React Component:
-```bash
+```javascript
 function Welcome() {
   return (
     <div>
@@ -37,7 +37,7 @@ function Welcome() {
 ## React Working Without Jsx
 React can work without JSX, because JSX is just syntactic sugar over React.createElement() function.
 
-```bash
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 

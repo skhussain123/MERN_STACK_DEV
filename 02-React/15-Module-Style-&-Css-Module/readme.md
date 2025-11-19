@@ -11,7 +11,7 @@
 
 ## Module Style For a Component
 #### src/Button.module.css
-```bash
+```javascript
 import React from 'react'
 import BtnNodule from "./Button.module.css"
 
@@ -26,7 +26,7 @@ export default App
 ```
 
 #### App.jsx
-```bash
+```javascript
 import React from 'react'
 import BtnNodule from "./Button.module.css"
 
@@ -45,7 +45,7 @@ export default App
 
 ![alt text](image5.PNG)
 
-```bash
+```javascript
 import './App.css'
 import styled from 'styled-components';
 
@@ -66,7 +66,7 @@ function App() {
 export default App
 ```
 
-```bash
+```javascript
 import styled, { ThemeProvider } from 'styled-components';
 
 const theme = {

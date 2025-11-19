@@ -7,13 +7,13 @@
 * Used when a file exports only one thing (the “main” export).
 
 **MyComponent.js**
-```bash
+```javascript
 export default function MyComponent() {
   return <h1>Hello from MyComponent!</h1>;
 }
 ```
 **App.js**
-```bash
+```javascript
 import MyComponent from './MyComponent';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
 Used when a file exports multiple things.
 
 **utils.js**
-```bash
+```javascript
 export function add(a, b) {
   return a + b;
 }
@@ -35,7 +35,7 @@ export function subtract(a, b) {
 }
 ```
 **App.js**
-```bash
+```javascript
 import { add, subtract } from './utils';
 
 console.log(add(2, 3));      // 5
@@ -45,7 +45,7 @@ console.log(subtract(5, 2)); // 3
 ### 3. Mixing Default and Named Exports
 You can export both from the same file.
 
-```bash
+```javascript
 export default function multiply(a, b) {
   return a * b;
 }
@@ -54,7 +54,7 @@ export const PI = 3.14159;
 ```
 
 **App.js**
-```bash
+```javascript
 import multiply, { PI } from './math';
 
 console.log(multiply(2, 3)); // 6

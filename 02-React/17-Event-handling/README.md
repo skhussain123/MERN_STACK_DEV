@@ -6,7 +6,7 @@ me call krna hota hain. function defination batani pharti hain. is tarha.
 
 ![alt text](image1.PNG)
 
-```bash
+```javascript
 function Profile() {
 
     // Normal JS function
@@ -88,7 +88,7 @@ export default Profile;
 | `onFocus`  | Input focus me aane par     |
 | `onBlur`   | Focus chodne par            |
 
-```bash
+```javascript
 <form onSubmit={(e) => { e.preventDefault(); userinfo(e.target[0].value) }}>
         <input onChange={(e) => console.log(e.target.value)} />
         <button type="submit">Submit</button>
@@ -130,17 +130,12 @@ export default Profile;
 
 
 
-
-
-
-
-
 ---
 ## JavaScript function call
 Ye normal JavaScript function hota hai jo kuch kaam karta hai aur phir result return karta hai.
 * Jab function call hota hai, sirf ek value return hoti hai (number, string, object, etc).
 * Iska React ya UI se koi lena dena nahi, ye sirf logic run karta hai.
-```bash
+```javascript
 function add(a, b) {
   return a + b;
 }
@@ -151,7 +146,7 @@ console.log(add(2, 3)); // 5
 ## React function call (Function Component)
 * React me function ka kaam UI (HTML JSX) return karna hota hai.
 * Ye normal JS function jaisa hi lagta hai, lekin difference ye hai ke ye JSX (UI structure) return karta hai.
-```bash
+```javascript
 function Button() {
   return <button>Click Me</button>;
 }
@@ -167,7 +162,7 @@ function Button() {
 ![alt text](image2.PNG)
 
 #### Parent Component (Parent.js)
-```bash
+```javascript
 import React from "react";
 import Child from "./Child";
 
@@ -187,7 +182,7 @@ export default function Parent() {
 ```
 
 #### Child Component (Child.js)
-```bash
+```javascript
 import React from "react";
 
 export default function Child({ onButtonClick }) {

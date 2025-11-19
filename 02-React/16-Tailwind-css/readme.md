@@ -1,10 +1,10 @@
 
 
 #### Installation
-```bash
+```javascript
 npm install tailwindcss @tailwindcss/vite
 ```
-```bash
+```javascript
 npx tailwindcss init -p
 
 or 
@@ -14,7 +14,7 @@ bun tailwindcss init -p
 ```
 
 #### vite.config.ts
-```bash
+```javascript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -28,12 +28,12 @@ export default defineConfig({
 ```
 
 #### App.css
-```bash
+```javascript
 @import "tailwindcss";
 ```
 
 #### App.jsx
-```bash
+```javascript
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'

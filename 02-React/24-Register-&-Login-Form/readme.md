@@ -1,7 +1,7 @@
 
 
 # Registration Form With Multiple State
-```bash
+```javascript
 import './App.css';
 import { useState } from 'react';
 
@@ -77,7 +77,7 @@ export default App;
 ---
 
 # Multiple Input Fields with One State Variable
-```bash
+```javascript
 import './App.css';
 import { useState } from 'react';
 
@@ -139,7 +139,7 @@ export default App;
 ```
 ---
 # Login Form
-```bash
+```javascript
 import './App.css';
 import { useState } from 'react';
 

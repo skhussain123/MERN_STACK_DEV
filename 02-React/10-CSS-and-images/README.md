@@ -24,7 +24,7 @@ External CSS means writing your styles in a separate .css file and linking that 
 CSS Modules let you write CSS in separate files (like external CSS), but with local scoping by default — so class names don’t conflict globally. It solves the class name collision problem of traditional external CSS.
 
 ##### App.module.css
-```bash
+```javascript
 .container {
   background-color: #f5f5f5;
   padding: 20px;
@@ -38,7 +38,7 @@ CSS Modules let you write CSS in separate files (like external CSS), but with lo
 
 ```
 ##### App Component
-```bash
+```javascript
 import React from 'react';
 import styles from './App.module.css'; // ✅ import styles as object
 
@@ -57,7 +57,7 @@ export default App;
 Styled Components is a popular library for styling React apps using CSS-in-JS — meaning you write actual CSS in your JavaScript files.It allows you to create components with styles attached directly, without needing separate CSS files.
 
 * npm install styled-components
-```bash
+```javascript
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -90,7 +90,7 @@ function App() {
 ---
 
 # 1. inline Css
-```bash
+```javascript
 import { useEffect, useState } from "react"
 function App() {
 
@@ -111,7 +111,7 @@ function App() {
 export default App
 ```
 #### Dynamic and Conditional inline Style
-```bash
+```javascript
 import { useEffect, useState } from "react"
 function App() {
 
@@ -150,20 +150,20 @@ External CSS means writing your styles in a separate .css file and linking that 
 External css file here
 
 ##### 2. App Component
-```bash
+```javascript
 import './App.css';
 
 ```
 
 # 2. Inernal Css
-```bash
+```javascript
 normal way
 ```
 
 ---
 
 ## React Uses Images 
-```bash
+```javascript
 import React from 'react'
 import weblogo from './images/weblogo.png'
 

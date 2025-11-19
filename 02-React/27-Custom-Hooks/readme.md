@@ -8,7 +8,7 @@
 
 
 #### App.jsx
-```bash
+```javascript
 import useToggle from "./useToggle";
 
 function Counter() {
@@ -44,7 +44,7 @@ export default Counter;
 
 
 #### useToggle.jsx (custom hook)
-```bash
+```javascript
 import { useState } from "react";
 
 const useToggle = (defaultVal) => {

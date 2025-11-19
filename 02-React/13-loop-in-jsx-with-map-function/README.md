@@ -4,7 +4,7 @@
 * Make tabel in jsx
 * use map function for looping
 
-```bash
+```javascript
 import { useState } from "react";
 
 function App() {
@@ -69,7 +69,7 @@ export default App;
 ```
 
 ## Resuse Component With Jsx Looping
-```bash
+```javascript
 import { useState } from "react";
 import User from "./User";
 
@@ -136,7 +136,7 @@ function App() {
 export default App;
 ```
 #### User Component
-```bash
+```javascript
 function User({ data }) {
 
   return (
@@ -156,7 +156,7 @@ export default User;
 ```
 
 ## Clock Project
-```bash
+```javascript
 import { useState } from "react";
 import Clock from "./Component/Clock";
 
@@ -181,7 +181,7 @@ export default App;
 ```
 
 #### Clock,jsx
-```bash
+```javascript
 import { useState, useEffect } from "react";
 
 function Clock({ color }) {

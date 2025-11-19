@@ -16,7 +16,7 @@ Isliye aapko props ko B → C → D ke through pass karna padta hai — even tho
 
 ![alt text](image1.PNG)
 
-```bash
+```javascript
 function App() {
   const user = "Muhammad Hussain";
 
@@ -54,13 +54,13 @@ React Context API ek aisa feature hai jo props drilling ko avoid karne ke liye u
 
 
 #### src/contexts/UserContext.js
-```bash
+```javascript
 import { createContext } from "react";
 export const UserContext = createContext(null); // default value optional
 ```
 
 #### src/providers/UserProvider.jsx
-```bash
+```javascript
 import React, { useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 
@@ -76,7 +76,7 @@ export default function UserProvider({ children }) {
 ```
 
 #### src/components/Profile.jsx
-```bash
+```javascript
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
@@ -90,7 +90,7 @@ export default Profile;
 ```
 
 #### src/App.jsx
-```bash
+```javascript
 import React, { useContext } from "react";
 import UserProvider from "./providers/UserProvider";
 import Profile from "./components/Profile";
