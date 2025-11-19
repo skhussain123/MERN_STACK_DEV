@@ -112,7 +112,7 @@ React har render par function component ko dobara chalata hai. Agar component me
 * useMemo is calculation ka result save kar leta hai.
 *  Dobara tabhi calculate hota hai jab dependency change ho.
 
-### UseMemo.jsx
+### UseMemo.jsx (use mamo function me value optimze krny ke liye use hota ha)
 ```bash
 import { useState } from "react";
 
@@ -237,5 +237,190 @@ const UseMemo = () => {
 export default UseMemo;
 ```
 
+---
+
+## React.memo vs useMemo
+React.memo and useMemo dono “performance optimization” ke liye use hote hain, lekin dono ka purpose different hota hai. Neeche simple explanation + examples ke saath samjhaya.
 
 
+### React.memo
+
+#### Kis waqt use hota hai?
+* Jab component ko unnecessary re-render se bachana ho.
+* Agar parent re-render ho raha hai, lekin child ko milne wale props change nahi ho rahe, to React.memo child ko re-render hone se rok deta hai.
+
+Agar Parent re-render ho, to normally Child bhi re-render hota hai. React.memo() child ko bolta hai:
+“Agar props same hain, render mat kar!”
+
+#### Example: React.memo
+```bash
+import React, { useState, memo } from "react";
+
+const Child = memo(({ count }) => {
+  console.log("Child Rendered");
+  return <h2>Child Count: {count}</h2>;
+});
+
+export default function App() {
+  const [value, setValue] = useState(0);
+  const [other, setOther] = useState(0);
+
+  return (
+    <>
+      <h1>Main Counter: {value}</h1>
+      <button onClick={() => setValue(value + 1)}>Increment Main</button>
+
+      <button onClick={() => setOther(other + 1)}>Increment Other</button>
+
+      <Child count={value} />
+    </>
+  );
+}
+
+```
+
+#### Kya hoga?
+* value change hoga → Child re-render hoga
+* other change hoga → Child re-render nahi hoga
+* Because its props (count) did not change.
+
+
+### useMemo
+#### Kis waqt use hota hai?
+* Jab koi expensive calculation ho jo har render par chalna nahi chahiye.
+* useMemo calculation ka result cache kar deta hai aur sirf tab run karta hai jab dependency change ho.
+
+#### Example: useMemo
+```bash
+import React, { useState, useMemo } from "react";
+
+export default function App() {
+  const [value, setValue] = useState(0);
+  const [other, setOther] = useState(0);
+
+  const expensiveCalculation = useMemo(() => {
+    console.log("Calculating...");
+    let total = 0;
+    for (let i = 0; i < 1000000000; i++) {
+      total += i;
+    }
+    return total;
+  }, [value]);
+
+  return (
+    <>
+      <h1>Main: {value}</h1>
+      <button onClick={() => setValue(value + 1)}>Increment Main</button>
+
+      <button onClick={() => setOther(other + 1)}>Increment Other</button>
+      <h2>Calculation: {expensiveCalculation}</h2>
+    </>
+  );
+}
+
+```
+
+#### Short Difference Table
+| Feature           | React.memo             | useMemo                                 |
+| ----------------- | ---------------------- | --------------------------------------- |
+| What it optimizes | Component re-render ko | Expensive function execution ko         |
+| Works on          | Components             | Functions / Calculations                |
+| When used         | Jab props change na ho | Jab heavy calculation repeat ho rahi ho |
+| Output            | Pure component         | Computed value                          |
+
+
+#### Easy Summary
+* React.memo → Component ko unnecessary render se bachata hai
+* seMemo → Calculation ko unnecessary dobara run hone se bachata hai
+
+
+---
+
+## useCallback Hook (kisi function ko optimize krny ke liye)
+useCallback React ka ek hook hai jo function ko memoize karta hai, taake unnecessary function re-creation na ho.
+
+#### Problem kya hoti hai?
+Jab component re-render hota hai, to har render par naye functions create hote hain, chahe unka logic same hi ho.
+
+#### Is se mushkil hoti hai:
+* Child components ko har render par new function reference milta hai
+* Agar child React.memo se optimized ho, to bhi vo re-render ho jata hai
+* Performance slow ho sakti hai
+* useCallback() function ka reference cache kar deta hai.
+
+
+Function ko tab tak same rakhta hai jab tak dependencies change na hon.
+
+### Example Without useCallback
+##### App.jsx
+```bash
+import { useState } from "react";
+import Child from "./Child";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [other, setOther] = useState(0);
+
+  const handleClick = () => {
+    console.log("Clicked");
+  };
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+      <button onClick={() => setOther(other + 1)}>Increase Other</button>
+
+      <Child onClick={handleClick} />
+    </>
+  );
+}
+
+```
+##### Child.jsx
+```bash
+import { memo } from "react";
+
+function Child({ onClick }) {
+  console.log("Child Rendered");
+  return <button onClick={onClick}>Child Button</button>;
+}
+
+export default memo(Child);
+```
+
+### Now Use useCallback
+```bash
+import { useState, useCallback } from "react";
+import Child from "./Child";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [other, setOther] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("Clicked");
+  }, []);
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+      <button onClick={() => setOther(other + 1)}>Increase Other</button>
+
+      <Child onClick={handleClick} />
+    </>
+  );
+}
+
+```
+#### Ab kya hoga?
+
+* handleClick function cache ho gaya
+* Jab tak dependency array [] change nahi hoti:
+  * Function same reference rahega
+  * Child React.memo ki wajah se re-render nahin hoga
+
+| Hook            | Purpose                             |
+| --------------- | ----------------------------------- |
+| `useCallback`   | Function ka reference memoize karna |
+| Stops           | Function recreate hone se           |
+| Works best with | `React.memo` child components       |
