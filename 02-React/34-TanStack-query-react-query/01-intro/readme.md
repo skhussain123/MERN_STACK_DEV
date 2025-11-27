@@ -4,6 +4,7 @@ TanStack Query (pehle React Query ke naam se mashhoor) React apps ke andar serve
 
 ![alt text](image1.PNG)
 
+---
 
 ### Simple Words Me TanStack Query Kya Hai?
 #### Aap API ka data manually fetch karte ho:
@@ -13,8 +14,12 @@ TanStack Query (pehle React Query ke naam se mashhoor) React apps ke andar serve
 * caching karna
 * stale data ko manage karna
 
+---
+
 #### TanStack Query yeh sab automatic kar deta hai.
 * Aap sirf ek hook lagate ho, aur sab handle ho jata hai.
+
+---
 
 ### Main Features
 #### Automatic Caching
